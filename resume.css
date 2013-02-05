@@ -1,0 +1,37 @@
+p {
+	font-family:'Helvetica Neue', Helvetica, arial, serif;
+	font-size:20px;
+
+}
+.bigboldc{
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+}
+.smallnormalc{
+	font-size:12px;
+	text-align:center;
+}
+
+.smallboldc{
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+}
+.bigbold{
+	font-size:16px;
+	font-weight:bold;
+	border:solid;
+}
+.smallnormal{
+	font-size:14px;
+}
+
+.smallbold{
+	font-size:14px;
+	font-weight:bold;
+}
+.italic{
+	font-size:14px;
+	font-style:italic;
+}
