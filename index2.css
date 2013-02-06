@@ -1,1 +1,27 @@
-asdf
+p {
+  font-family: Arial;
+	font-size:130px;
+}
+
+.sizeone {
+
+	font-size:10px;
+
+}
+
+.sizetwo {
+
+	font-size:20px;	
+
+}
+.sizethree{
+
+	font-size:30px;	
+
+}
+
+.sizefour{
+
+	font-size:40px;	
+
+}
