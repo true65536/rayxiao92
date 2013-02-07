@@ -1,0 +1,10 @@
+body{
+	background-image: url("omfgdogs.gif");
+}
+
+.footerright{
+	position:absolute;
+	bottom:5px;
+	right:10px;
+	font-size:50px;
+}
