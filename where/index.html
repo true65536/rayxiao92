@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Assignment3</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<script type="text/javascript" src="where.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;v=3&amp;libraries=geometry"></script>
+
+<link rel="stylesheet" href="where.css" />
+
+<script>
+
+/*
+hahhah
+*/
+
+
+ 	RedLat=[42.395428,42.39674,42.3884,42.373362,42.365486,42.36249079,42.361166,42.35639457,42.355518,42.352271,42.342622,42.330154,42.320685,42.31129,42.300093,42.29312583,42.284652,42.275275,42.2665139,42.251809,42.233391,42.2078543];
+   RedLng=[-71.142483,-71.121815,-71.119149,-71.118956,-71.103802,-71.08617653,-71.070628,-71.0624242,-71.060225,-71.055242,-71.056967,-71.057655,-71.052391,-71.053331,-71.061667,-71.06573796,-71.064489,-71.029583,-71.0203369,-71.005409,-71.007153,-71.0011385,];
+   RedName=["ALEWIFE","DAVIS","PORTER","HARVARD","CENTRAL","KENDALL","CHARLES MGH","PARK","DOWNTOWN CROSSING","SOUTH STATION","BROADWAY","ANDREW","JFK","SAVIN HILL","FIELDS CORNER","SHAWMUT","ASHMONT","NORTH QUINCY","WOLLASTON","QUINCY CENTER","QUINCY ADAMS","BRAINTREE"];
+   RedVar=["ALEWIFE","DAVIS","PORTER","HARVARD","CENTRAL","KENDALL","CHARLES MGH","PARK","DOWNTOWN CROSSING","SOUTH STATION","BROADWAY","ANDREW","JFK","SAVIN HILL","FIELDS CORNER","SHAWMUT","ASHMONT","NORTH QUINCY","WOLLASTON","QUINCY CENTER","QUINCY ADAMS","BRAINTREE"];
+   RedMark=["ALEWIFE","DAVIS","PORTER","HARVARD","CENTRAL","KENDALL","CHARLES MGH","PARK","DOWNTOWN CROSSING","SOUTH STATION","BROADWAY","ANDREW","JFK","SAVIN HILL","FIELDS CORNER","SHAWMUT","ASHMONT","NORTH QUINCY","WOLLASTON","QUINCY CENTER","QUINCY ADAMS","BRAINTREE"]; 
+   NB=["RALEN","RDAVN","RPORN","RHARN","RCENN","RKENN","RMGHN","RPRKN","RDTCN","RSOUN","RBRON","RANDN","RJFKN","RSAVN","RFIEN","RSHAN","","RNQUN","RWOLN","RQUCN","RQUAN",""];
+   SB=["","RDAVS","RPORS","RHARS","RCENS","RKENS","RMGHS","RPRKS","RDTCS","RSOUS","RBROS","RANDS","RJFKS","RSAVS","RFIES","RSHAS","RASHS","RNQUS","RWOLS","RQUCS","RQUAS","RBRAS"];
+  /***up is good***/
+  
+  var myLat = 0;
+  var myLng = 0;
+  var request = new XMLHttpRequest();
+  var me = new google.maps.LatLng(myLat, myLng);
+  var myOptions = {
+    zoom: 11, // The larger the zoom number, the bigger the zoom
+    center: me,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map;
+  var marker;
+  var infowindow = new google.maps.InfoWindow();
+  var places;
+
+function init()
+{
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  getMyLocation();
+}
+
+function getMyLocation()
+{
+  if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+    navigator.geolocation.getCurrentPosition(function(position) {
+    myLat = position.coords.latitude;
+    myLng = position.coords.longitude;
+    renderMap();
+  });
+}
+  else {
+    alert("Geolocation is not supported by your web browser. What a shame!");
+  }
+}
+
+function renderMap()
+{
+  me = new google.maps.LatLng(myLat, myLng);
+
+// Update map and go there...
+  map.panTo(me);
+
+// Create a marker
+  marker = new google.maps.Marker({position: me, title: "Here I Am" + " ("+myLat+ " "+ myLng+")"});
+  marker.setMap(map);
+  
+// Open info window on click of marker
+
+//
+//Alewife
+  
+  
+  NBtime=[];
+  SBtime=[];
+  for(i=0;i<22;i++){
+    NBtime[i]=[];
+    SBtime[i]=[];
+  }
+  req = new XMLHttpRequest();
+
+  req.open('GET', "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+  req.send(null);
+  req.onreadystatechange=callbackk;
+  
+	WalAndCar= new XMLHttpRequest();
+	WalAndCar.open('GET',"http://messagehub.herokuapp.com/a3.json",true);
+	WalAndCar.send(null);
+	WalAndCar.onreadystatechange=callbackWC;
+	WCVar=[];
+	WCPos=[];
+	function callbackWC(){
+
+		if(WalAndCar.readyState==4 && WalAndCar.status==200){
+			WC=JSON.parse(WalAndCar.responseText);
+			for(i=0;i<WC.length;i++){
+				if(WC[i].name=="Waldo"){
+				var iccon="Waldo.png";
+				}
+				else if(WC[i].name=="Carmen Sandiego"){
+				var iccon="carmen.png";
+				}
+				WCPos[i]=new google.maps.LatLng(WC[i].loc.latitude, WC[i].loc.longitude);
+				WCVar[i]=new google.maps.Marker({position: WCPos[i], title: WC[i].name + " : "+ WC[i].loc.note, icon:iccon});
+				WCVar[i].setMap(map);		
+							//console.log("af1");
+				WChelper(WCVar[i],i);
+				
+				function WChelper(marker, number){
+				//	console.log("af2");
+			//	console.log(WC[number].name);
+				  google.maps.event.addListener(marker, 'click', function() {
+  					element=marker.title+"</br>"+"I am "+
+  					google.maps.geometry.spherical.computeDistanceBetween (me, WCPos[number])/1609.34+" miles away from you! ";
+					infowindow.setContent(element);
+  					infowindow.open(map, marker);
+  					});
+  					
+				}
+				
+			}		
+		}
+		else{
+			console.log("you suck");
+		}
+	}
+	
+    function callbackk(){
+//console.log(req.readyState);
+     if(req.readyState==4 && req.status==200){
+      haha=JSON.parse(req.responseText);
+      for (i = 0 ; i < haha.length ; i++){
+	x=haha[i].PlatformKey;
+	if(x.charAt(4)=='N'){
+	  for(j=0;j<23;j++){
+	    if(x==NB[j]){
+	    	if(haha[i].InformationType=="Predicted"){
+	      		NBtime[j].push(haha[i].TimeRemaining);
+	      	}
+	      //console.log(haha[i].Time);
+	      	      	     //console.log(NBtime[j][0]);
+	    }
+	  }
+	}
+	else if(x.charAt(4)=='S'){
+	  for(j=0;j<23;j++){
+	    if(x==SB[j]){
+	   // num=j;
+	  	 	if(haha[i].InformationType=="Predicted"){
+	     		 SBtime[j].push(haha[i].TimeRemaining);
+	      	     // console.log(haha[i].Time);
+	    	}
+	    }	    
+	  }
+	}
+//	locationlist.push(haha[i].location);
+      }
+     }
+     else{
+     }
+    // console.log(SBtime[num][0]);
+     label();
+     
+    }
+function label(){
+  var pathAsh=[];
+  var pathBra=[];
+   miledistance=[];
+
+  for(i=0;i<22;i++){
+
+    RedVar[i]= new google.maps.LatLng(RedLat[i],RedLng[i]);
+    map.panTo(RedVar[i]);
+    RedMark[i] = new google.maps.Marker({position: RedVar[i], title: RedName[i]
+    ,icon:"redT.png"
+    });
+    RedMark[i].setMap(map);
+    attachinfo(RedMark[i],i); 
+       // console.log(RedLng[i]);
+  miledistance[i]=google.maps.geometry.spherical.computeDistanceBetween(me, RedVar[i])/1609.34;
+
+  }
+  var mindistance=miledistance[0];
+  var minindex=0;
+  for(i=0;i<22;i++){
+  	if (miledistance[i]<mindistance){
+  	//console.log(miledistance[i]);
+  		mindistance=miledistance[i];
+  		minindex=i;
+  	}
+  }
+  google.maps.event.addListener(marker, 'click', function() {
+  element=marker.title+"</br> The closest station "+ RedName[minindex] + " is " + miledistance[minindex] + " miles away from me! ";
+  
+  infowindow.setContent(element);
+  infowindow.open(map, marker);
+  });
+  //path1
+  for(i=0;i<13;i++){
+    pathAsh.push(RedVar[i]);
+    pathBra.push(RedVar[i]);
+  }
+  for(i=13;i<17;i++){
+    pathAsh.push(RedVar[i]);
+  }
+  for(i=17;i<22;i++){
+    pathBra.push(RedVar[i]);
+  }
+  var pathone=new google.maps.Polyline({
+    path: pathAsh,
+    strokeColor: "#FF0000", 
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+    });
+  var pathtwo=new google.maps.Polyline({
+    path: pathBra,
+    strokeColor: "#FF0000", 
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+    });
+    pathone.setMap(map);
+    pathtwo.setMap(map);
+  //path2
+  function attachinfo(marker,number){
+    google.maps.event.addListener(marker, 'click', function() {
+    //infowindow.setContent(marker.title);
+    var element;
+    element=marker.title+"</br>";
+    element+="( " +RedLat[number]+" , "+RedLng[number]+" )</br>";
+    
+    element+="Northbound Train Arrives in</br>";
+    for(i=0;i<NBtime[number].length;i++){
+      element+=NBtime[number][i]+"</br>";
+    }
+    element+="----------------------------------</br>"
+    element+="Southbound Train Arrives in</br>";
+    for(i=0;i<SBtime[number].length;i++){
+      element+=SBtime[number][i]+"</br>";
+    }    
+    infowindow.setContent(element);    
+    infowindow.open(map, marker);
+    });
+  }
+}
+}
+// Calling Google Places API
+
+
+
+// Taken from http://code.google.com/apis/maps/documentation/javascript/places.html
+function callback(results, status)
+{
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    alert("Got places back!");
+    places = results;
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+function createMarker(place)
+{
+  var placeLoc = place.geometry.location;
+   var marker = new google.maps.Marker({map: map,position: place.geometry.location});
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.close();
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+   });
+}
+
+</script>
+
+
+</head>
+
+<body onload="init()">
+<div id="map_canvas"></div>
+</body>
+</html>

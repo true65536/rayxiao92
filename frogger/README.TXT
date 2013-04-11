@@ -11,4 +11,4 @@ almost everything
 time consumed: 6hrs
 
 collaborate: 
-I discussed collision detection ideas with Kezhi.
+I discussed collision detection ideas with Kezhi
