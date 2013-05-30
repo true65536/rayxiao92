@@ -10,7 +10,6 @@
 	Github and Heroku
 	What http, javascript, css and so many familiar things really are
 	Database(Mongo), Although I spent 30 hours on figuring out syntax, I felt this is the project I learnt most from
-	How to hack password, invite all friends to event on facebook using js
 Skills 
 	Revision control
 	Attention to details
