@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<link href="post.css" rel="stylesheet" type="text/css"/>
+<head>
+	<script type="text/javascript">
+	
+	function preview(){
+	//alert();
+		mydiv = document.getElementById("preview");
+		var newtitle = document.createElement('div');
+		newtitle.style.cssText='font-family:times';
+		
+    	newtitle.innerHTML = document.getElementById("title").value;
+
+	    while (newtitle.firstChild) {
+    	    mydiv.appendChild(newtitle.firstChild);
+    	}
+	}
+	</script>
+</head>
+<html>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="center">
+
+<div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-send="true" data-width="450" data-show-faces="true"></div>
+Title:<br><input id="title"><br>
+Link to the article: <br><input id="linktopage"><br>
+Link to the pic:<br><input id="linktopic"><br>
+Summary:<br><textarea id="summary" ></textarea><br>
+Opinion:<br><textarea id="opinion"></textarea><br>
+
+<button id="review" onclick="preview();">Preview before submit!</button>
+</div>
+<div id="preview"></div>
+</body>
+</html>

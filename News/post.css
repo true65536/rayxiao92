@@ -1,0 +1,32 @@
+body {
+	font-size: 14pt;
+	font-family: Antiqua;
+}
+#summary{
+	height: 200px;
+}
+#opinion {
+	height: 100px;
+}
+textarea {
+	resize: none;
+}
+#title,
+#summary, 
+#linktopage,
+#opinion,
+#linktopic,
+#preview{
+	width:80%;
+	font-size: 14pt;
+	font-family: Antiqua;
+}
+#preview{
+	margin-left:10%;
+	margin-right:10%;
+}
+.center {
+	margin-left:10%;
+	margin-right:10%;
+	
+}
