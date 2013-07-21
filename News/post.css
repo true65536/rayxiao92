@@ -21,7 +21,8 @@ textarea {
 	font-size: 14pt;
 	font-family: Antiqua;
 }
-#preview{
+#preview, 
+#fb-root{
 	margin-left:10%;
 	margin-right:10%;
 }
