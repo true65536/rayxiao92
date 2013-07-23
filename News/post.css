@@ -5,29 +5,63 @@ body {
 #summary{
 	height: 200px;
 }
-#opinion {
+#origin {
 	height: 100px;
 }
 textarea {
 	resize: none;
+
+
 }
+
 #title,
 #summary, 
 #linktopage,
-#opinion,
-#linktopic,
-#preview{
+#origin,
+#linktopic
+{
 	width:80%;
 	font-size: 14pt;
 	font-family: Antiqua;
 }
-#preview, 
-#fb-root{
+#preview {
+	background-color: #F0E9D0;
 	margin-left:10%;
 	margin-right:10%;
+	Padding-top:5px;
+	Padding-bottom:10px;
+	Padding-left:10px;
+	Padding-right:10px;
+	width:80%;
+	position:relative;
+
 }
 .center {
 	margin-left:10%;
-	margin-right:10%;
+	margin-right:10%;	
+}
+#p-title {
+	font-size: 18pt;
+	font-family: Arial;
+	font-weight:bold;
+	max-width:80%;
+	display:inline;
+}
+#p-subtitle {
+	font-size:14pt;
+	font-family:fantasy;
+	color:#C3C3C3;
+}
+#p-sum {
+	font-size:16pt;
+	font-family:Calibri;
+	line-height:120%;
+	color:#404040;
 	
+
+}
+#portrait {
+float:right;
+clear:both;
+margin: 0px 15px 15px 0px;
 }

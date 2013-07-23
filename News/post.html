@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <link href="post.css" rel="stylesheet" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <head>
 	<script type="text/javascript">
 	
 	function preview(){
-	//alert();
-		mydiv = document.getElementById("preview");
-		var newtitle = document.createElement('div');
-		newtitle.style.cssText='font-family:times';
-		
-    	newtitle.innerHTML = document.getElementById("title").value;
-
-	    while (newtitle.firstChild) {
-    	    mydiv.appendChild(newtitle.firstChild);
+    	if(document.getElementById("title").value==""){
+    		document.getElementById("title").value=document.getElementById("title").placeholder;
     	}
+    	if(document.getElementById("summary").value==""){
+    		document.getElementById("summary").value=document.getElementById("summary").placeholder;
+    	}
+    	document.getElementById("p-title").innerHTML=document.getElementById("title").value+"<img height='50' width='50' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>";
+    	document.getElementById("p-subtitle").innerHTML="By Ray Xiao";
+    	document.getElementById("p-sum").innerHTML=document.getElementById("summary").value;
+    	//}
+	}
+	
+	function submit(){
+		title_=document.getElementById("title").value;
+		linktopage_=document.getElementById("linktopage").value;
+		linktopic_=document.getElementById("linktopic").value;
+		summary_=document.getElementById("summary").value;
+		origin_=document.getElementById("origin").value;
+		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_};
+		$.post('http://ancient-cove-1542.herokuapp.com/newspost.json',data);
+		alert(data);
+		console.log(data);
 	}
 	</script>
 </head>
 <html>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 
-<div class="fb-like" data-href="http://rayxiao92.github.io/News/index.html" data-send="false" data-width="450" data-show-faces="true"></div>
+
 <div class="center">
-Title:<br><input id="title"><br>
+Title:<br><input id="title" placeholder="Japan Voters Head to Polls For Upper House Election"><br>
 Link to the article: <br><input id="linktopage"><br>
 Link to the pic:<br><input id="linktopic"><br>
-Summary:<br><textarea id="summary" ></textarea><br>
-Opinion:<br><textarea id="opinion"></textarea><br>
-
+Summary:<br><textarea id="summary" placeholder="TOKYO—Japanese voters headed to the polls Sunday to decide who would fill half in the upper house of parliament in a contest that is largely seen as a gauge of the public's reception to the economic policies of Prime Minister Shinzo Abe."></textarea><br>
+Origin:<br><textarea id="origin"></textarea><br>
 <button id="review" onclick="preview();">Preview before submit!</button>
+<button id="submit" onclick="submit();">Submit!</button>
 </div>
-<div id="preview"></div>
+
+<div id="preview">
+	<p id="p-title"></p>
+	<p id="p-subtitle"></p>
+	<p id="p-sum"></p>
+</div>
 </body>
 </html>

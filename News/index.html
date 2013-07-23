@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<link href="index.css" rel="stylesheet" type="text/css"/>
+<script>
+function start(){
+
+	//Use get API of member database here
+	request = new XMLHttpRequest();
+	request.open("GET", 'http://ancient-cove-1542.herokuapp.com/', true);
+	request.send(null);
+	request.onreadystatechange = function(){
+		if (request.readyState == 4 && request.status == 200) {
+     		database = JSON.parse(request.responseText);
+      	}
+	}
+	for(i=0;i<database.length;i++){
+	
+	}
+	
+}
+</script>
+<html>
+<head>
+</head>
+
+<body onload="start()">
+
+<div id="newslist">
+<table class="onepiece">
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title">UBS Settles With U.S. Mortgage Regulator</div>
+		<div class="p-subtitle">By Rui Xiao	- July 23th, 2013</div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum">UBS said it has agreed to a settlement with the Federal Housing Finance Agency, the U.S. regulator for mortgage-finance giants Fannie Mae FNMA +4.96% and Freddie Mac, FMCC +4.62% over allegations that the Swiss banking giant sold defective mortgage-backed securities in the lead-up to the U.S. financial crisis between 2004 and 2007.</div>
+	</td>
+</tr>
+</table>
+
+<table class="onepiece">
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title">Foreign Capital Outflows Hit China in June</div>
+		<div class="p-subtitle">By Rui Xiao	- July 22th, 2013</div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum">BEIJING—Foreign capital flowed out of China in June as economic growth slowed and a rise in the Chinese currency stalled, contributing to a credit crunch that briefly strained the nation's banking system.<br><br>
+People's Bank of China and financial institutions sold a net 41.2 billion yuan ($6.71 billion) worth of foreign currency in June compared with net purchases of 66.86 billion yuan in May, according to Wall Street Journal calculations based on central bank data released Monday.
+
+</div>
+	</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
