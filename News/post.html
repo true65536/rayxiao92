@@ -23,7 +23,7 @@
 		linktopic_=document.getElementById("linktopic").value;
 		summary_=document.getElementById("summary").value;
 		origin_=document.getElementById("origin").value;
-		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_};
+		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_ ,"prt":'http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg', "subt":"By Rui Xiao - July 23rd, 2013 "};
 		$.post('http://ancient-cove-1542.herokuapp.com/newspost.json',data);
 		alert(data);
 		console.log(data);

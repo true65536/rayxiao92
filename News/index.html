@@ -7,15 +7,27 @@ function start(){
 	request = new XMLHttpRequest();
 	request.open("GET", 'http://ancient-cove-1542.herokuapp.com/', true);
 	request.send(null);
+	database="";
 	request.onreadystatechange = function(){
 		if (request.readyState == 4 && request.status == 200) {
      		database = JSON.parse(request.responseText);
+     		console.log(database.length);
+     		listcontent="";
+			for(i=0;i<database.length;i++){
+				console.log("hehe");
+				console.log(database[i]["title"]);
+				//onepis.className="onepiece";
+				tablecontent="";
+				tablecontent+="<table class='onepiece'><tr><td style='word-wrap: break-word'><div class='p-title'>"+database[i]["title"]+"</div><div class='p-subtitle'>"+database[i]["subt"]+"</div></td><td class='portrait'><img height='60' width='60' src="+database[i]["prt"]+"></td></tr><td class='summary' style='word-wrap: break-word' colspan='2'><div class='p-sum'>"+database[i]["summary"]+"</div></td></tr></table>"
+				listcontent+=tablecontent;
+			}
+			document.getElementById("newslist").innerHTML=listcontent;
+      	}
+      	else{
+      		console.log("haha");
       	}
 	}
-	for(i=0;i<database.length;i++){
-	
-	}
-	
+
 }
 </script>
 <html>
@@ -26,6 +38,26 @@ function start(){
 
 <div id="newslist">
 <table class="onepiece">
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title"></div>
+		<div class="p-subtitle"></div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum"></div>
+	</td>
+</tr>
+</table>
+
+
+
+<table class="onepiece">
+
+
 
 <tr>
 	<td style="word-wrap: break-word">
