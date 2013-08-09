@@ -29,6 +29,7 @@ body {
     border-top-color: #C0C0C0;
     padding:30px;
     padding-bottom:50px;
+    
 }
 #newslist{
 	margin:30px 3px 10px 3px;
@@ -36,27 +37,26 @@ body {
 .p-title {
 	font-size: 48pt;
 	font-family: helvetica;
-	font-stretch: wider;
+
 	font-weight:bold;
 	max-width:85%;
 	display:inline;
 	line-height: 120%;
 	padding-top: 10px;
-	padding-bottom: 5px;
+	padding-bottom: 100px;
 }
 .p-subtitle {
-	font-size:40pt;
+	font-size:32pt;
 	font-family:Palatino;
-
 	color:#B3B3B3;
 	line-height: 10%;
 	padding-top: 30px;
-	padding-bottom: 25px;
+	padding-bottom: 60px;
 }
 .p-sum {
 	font-size:40pt;
 	font-family:Palatino;
-    font-stretch: narrower;
+    font-stretch: ultra-expanded;
 	line-height:120%;
 	color:#404040;
 	
