@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <link href="post.css" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+function nl2br (str, is_xhtml) {   
+var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+}
+
+</script>
 <head>
 	<script type="text/javascript">
 	
@@ -11,9 +18,16 @@
     	if(document.getElementById("summary").value==""){
     		document.getElementById("summary").value=document.getElementById("summary").placeholder;
     	}
-    	document.getElementById('p-title').innerHTML=document.getElementById("title").value;
-    	document.getElementById("p-subtitle").innerHTML="By Ray Xiao";
-    	document.getElementById("p-sum").innerHTML=document.getElementById("summary").value;
+a=  nl2br(document.getElementById("summary").value, false);				document.getElementById('p-title').innerHTML=document.getElementById("title").value;
+        var d=new Date();
+        var day_=d.getDate();
+        var month_=d.getMonth()+1;
+        var year_=d.getFullYear();
+        var hour_=d.getHours();
+        var minute_=d.getMinutes();
+        var subt_="By Rui Xiao - "+year_+"/"+month_+"/"+day_+" "+hour_+":"+minute_;
+    	document.getElementById("p-subtitle").innerHTML=subt_;
+    	document.getElementById("p-sum").innerHTML=a;
     	document.getElementById("portrait").innerHTML="<img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>"
     	//}
 	}
@@ -22,10 +36,23 @@
 		title_=document.getElementById("title").value;
 		linktopage_=document.getElementById("linktopage").value;
 		linktopic_=document.getElementById("linktopic").value;
-		summary_=document.getElementById("summary").value;
+		nltobr=  nl2br(document.getElementById("summary").value, false);	
+		summary_=nltobr;
 		origin_=document.getElementById("origin").value;
-		
-		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_ ,"prt":'http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg', "subt":"By Rui Xiao - July 23rd, 2013 "};
+        var d=new Date();
+        var day_=d.getDate();
+        var month_=d.getMonth()+1;
+        var year_=d.getFullYear();
+        var hour_=d.getHours();
+        var minute_=d.getMinutes();
+
+        var subt_="By Rui Xiao - "+year_+"/"+month_+"/"+day_+" "+hour_+":"+minute_;
+		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_ ,"prt":'http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg',   				"subt":subt_,
+            "day":day_,
+            "month":month_,
+            "year":year_,
+            "hour":hour_,
+            "minute":minute_};
 		$.post('http://ancient-cove-1542.herokuapp.com/newspost.json',data);
 		alert(data);
 		console.log(data);
