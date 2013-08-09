@@ -2,9 +2,10 @@ body {
 	background-color: #FFFFFF;
 }
 .portrait {
-	width:180px;
+	width:0px;
 	vertical-align:top;
 	text-align:right;
+    visibility:hidden;
 }
 
 .summary {
