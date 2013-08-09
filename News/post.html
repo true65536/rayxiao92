@@ -31,6 +31,7 @@ a=  nl2br(document.getElementById("summary").value, false);				document.getEleme
         var year_=d.getFullYear();
         var hour_=d.getHours();
         var minute_=d.getMinutes();
+
         var subt_="By Rui Xiao - "+year_+"/"+month_+"/"+day_+" "+hour_+":"+minute_;
     	document.getElementById("p-subtitle").innerHTML=subt_;
     	document.getElementById("p-sum").innerHTML=a;
@@ -52,14 +53,19 @@ a=  nl2br(document.getElementById("summary").value, false);				document.getEleme
         var year_=d.getFullYear();
         var hour_=d.getHours();
         var minute_=d.getMinutes();
-
+        var datenum_=minute_+100*hour_+10000*day_+1000000*month_+100000000*year_; 
+        console.log(datenum_);
+        if(minute_<10){
+        	minute_="0"+minute_;
+        }
         var subt_="By Rui Xiao - "+year_+"/"+month_+"/"+day_+" "+hour_+":"+minute_;
 		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_ ,"prt":'http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg',   				"subt":subt_,
             "day":day_,
             "month":month_,
             "year":year_,
             "hour":hour_,
-            "minute":minute_};
+            "minute":minute_,
+            "datenum":datenum_};
 		$.post('http://ancient-cove-1542.herokuapp.com/newspost.json',data);
 		alert(data);
 		console.log(data);
