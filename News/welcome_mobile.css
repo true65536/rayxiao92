@@ -21,7 +21,7 @@ body {
 }
 .onepiece {
 	table-layout: fixed; 
-	width: 90%; 
+	width: 95%; 
 	margin-left:auto; 
     margin-right:auto;
     border-top-style:solid;
@@ -32,7 +32,7 @@ body {
     
 }
 #newslist{
-	margin:30px 5px 10px 5px;
+	margin:30px 4px 10px 4px;
 }
 .p-title {
 	font-size: 48pt;

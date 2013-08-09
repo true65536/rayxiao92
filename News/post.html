@@ -2,16 +2,22 @@
 <link href="post.css" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
-function nl2br (str, is_xhtml) {   
-var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
-return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
-}
-
+	function nl2br (str, is_xhtml) {   
+		var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+		return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+	}
+	function word_count(haha)
+	{
+     hahha = haha.replace(/^\s*|\s*$/g,''); //removes whitespace from front and end
+     var count_array = haha.split(" ");
+     document.getElementById("countershower").value = "Word count: "+count_array.length+". Maximum is 110 words";
+	}
 </script>
 <head>
 	<script type="text/javascript">
 	
 	function preview(){
+		
     	if(document.getElementById("title").value==""){
     		document.getElementById("title").value=document.getElementById("title").placeholder;
     	}
@@ -29,6 +35,7 @@ a=  nl2br(document.getElementById("summary").value, false);				document.getEleme
     	document.getElementById("p-subtitle").innerHTML=subt_;
     	document.getElementById("p-sum").innerHTML=a;
     	document.getElementById("portrait").innerHTML="<img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>"
+    	word_count(document.getElementById('summary').value);
     	//}
 	}
 	
@@ -86,7 +93,7 @@ a=  nl2br(document.getElementById("summary").value, false);				document.getEleme
 	</script>
 </head>
 <html>
-<body>
+<body onkeyup="word_count(document.getElementById('summary').value);" onmousedown="word_count(document.getElementById('summary').value);">
 
 
 
@@ -94,7 +101,9 @@ a=  nl2br(document.getElementById("summary").value, false);				document.getEleme
 Title:<br><input id="title" placeholder="Japan Voters Head to Polls For Upper House Election"><br>
 Link to the article: <br><input id="linktopage"><br>
 Link to the pic:<br><input id="linktopic"><br>
-Summary:<button  id="bold" onclick="bold()">B</button><br><textarea id="summary" placeholder="TOKYO—Japanese voters headed to the polls Sunday to decide who would fill half in the upper house of parliament in a contest that is largely seen as a gauge of the public's reception to the economic policies of Prime Minister Shinzo Abe."></textarea><br>
+Summary:<button  id="bold" onclick="bold()">B</button><br><textarea id="summary" placeholder="TOKYO—Japanese voters headed to the polls Sunday to decide who would fill half in the upper house of parliament in a contest that is largely seen as a gauge of the public's reception to the economic policies of Prime Minister Shinzo Abe." ></textarea><br>
+<input id="countershower" value="" size="35" disabled ></input>
+<br>
 Origin:<br><textarea id="origin"></textarea><br>
 <button id="review" onclick="preview();">Preview before submit!</button>
 <button id="submit" onclick="submit();">Submit!</button>

@@ -85,7 +85,12 @@ textarea {
 	vertical-align:top;
 	text-align:right;
 }
-
+#countershower {
+	background-color: #F0E9D0;
+	border:transparent;
+		font-size:14pt;
+	font-family:Palatino;
+}
 img {
 	border-radius:10px;
 }
