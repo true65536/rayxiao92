@@ -1,5 +1,5 @@
 body {
-	background-color: #F0E9D0;
+	background-color: #00E9D0;
 }
 .portrait {
 	width:80px;
@@ -14,6 +14,9 @@ body {
 
 .title {
 	word-wrap: break-word; 
+}
+.googledoc {
+	margin: 0 auto;
 }
 .onepiece {
 	table-layout: fixed; 
@@ -36,7 +39,7 @@ body {
 	font-weight:bold;
 	max-width:80%;
 	display:inline;
-	line-height: 100%;
+	line-height: 120%;
 	padding-top: 10px;
 	padding-bottom: 5px;
 }

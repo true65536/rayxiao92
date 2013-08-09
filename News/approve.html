@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
-<link rel="stylesheet" href="welcome_mobile.css" media="(max-width: 640px)" type="text/css"/>
-<link rel="stylesheet" href="welcome_style.css" media="(min-width:640px)" type="text/css"/>
+<link href="approve.css" rel="stylesheet" type="text/css"/>
 <script>
 function start(){
 
@@ -52,10 +50,10 @@ function start(){
 <head>
 </head>
 
-<body onload="start();" > 
+<body onload="start();" >
+<div id="example">I'm in a dialog!</div>
+$("#example").dialog();
 <div id="newslist">
-
-
 <!--
 <table class="onepiece">
 

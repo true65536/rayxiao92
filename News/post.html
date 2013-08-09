@@ -11,9 +11,10 @@
     	if(document.getElementById("summary").value==""){
     		document.getElementById("summary").value=document.getElementById("summary").placeholder;
     	}
-    	document.getElementById("p-title").innerHTML=document.getElementById("title").value+"<img height='50' width='50' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>";
+    	document.getElementById('p-title').innerHTML=document.getElementById("title").value;
     	document.getElementById("p-subtitle").innerHTML="By Ray Xiao";
     	document.getElementById("p-sum").innerHTML=document.getElementById("summary").value;
+    	document.getElementById("portrait").innerHTML="<img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>"
     	//}
 	}
 	
@@ -23,11 +24,38 @@
 		linktopic_=document.getElementById("linktopic").value;
 		summary_=document.getElementById("summary").value;
 		origin_=document.getElementById("origin").value;
+		
 		data={"title":title_, "linktopage":linktopage_, "linktopic": linktopic_, "summary":summary_, "origin":origin_ ,"prt":'http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg', "subt":"By Rui Xiao - July 23rd, 2013 "};
 		$.post('http://ancient-cove-1542.herokuapp.com/newspost.json',data);
 		alert(data);
 		console.log(data);
 	}
+	function bold(){
+		var select = GetSelectedText();
+		alert(select);
+	}
+	
+	function GetSelectedText(){
+  		var selectedText=(
+        window.getSelection
+        ?
+            window.getSelection()
+        :
+            document.getSelection
+            ?
+                document.getSelection()
+            :
+                document.selection.createRange().text
+    	 );
+		 if(!selectedText || selectedText==""){
+  		  if(document.activeElement.selectionStart){
+    		 selectedText = document.activeElement.value.substring(
+      	    document.activeElement.selectionStart
+          . document.activeElement.selectionEnd);
+   			 }
+		 }
+ 		return selectedText;
+}
 	</script>
 </head>
 <html>
@@ -39,16 +67,27 @@
 Title:<br><input id="title" placeholder="Japan Voters Head to Polls For Upper House Election"><br>
 Link to the article: <br><input id="linktopage"><br>
 Link to the pic:<br><input id="linktopic"><br>
-Summary:<br><textarea id="summary" placeholder="TOKYO—Japanese voters headed to the polls Sunday to decide who would fill half in the upper house of parliament in a contest that is largely seen as a gauge of the public's reception to the economic policies of Prime Minister Shinzo Abe."></textarea><br>
+Summary:<button  id="bold" onclick="bold()">B</button><br><textarea id="summary" placeholder="TOKYO—Japanese voters headed to the polls Sunday to decide who would fill half in the upper house of parliament in a contest that is largely seen as a gauge of the public's reception to the economic policies of Prime Minister Shinzo Abe."></textarea><br>
 Origin:<br><textarea id="origin"></textarea><br>
 <button id="review" onclick="preview();">Preview before submit!</button>
 <button id="submit" onclick="submit();">Submit!</button>
+
 </div>
 
-<div id="preview">
-	<p id="p-title"></p>
-	<p id="p-subtitle"></p>
-	<p id="p-sum"></p>
-</div>
+<table id="onepiece">
+<tr>
+	<td style="word-wrap: break-word">
+		<div id="p-title"></div>
+		<div id="p-subtitle"></div>
+	</td>
+	<td id="portrait">
+	</td>
+</tr>
+<tr>
+	<td style="word-wrap: break-word" colspan="2">
+		<div id="p-sum"></div>
+	</td>
+</tr>
+</table>
 </body>
 </html>
