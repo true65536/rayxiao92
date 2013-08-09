@@ -2,7 +2,7 @@ body {
 	background-color: #FFFFFF;
 }
 .portrait {
-	width:80px;
+	width:180px;
 	vertical-align:top;
 	text-align:right;
 }
@@ -33,7 +33,7 @@ body {
 	margin:30px 10px 10px 10px;
 }
 .p-title {
-	font-size: 52pt;
+	font-size: 48pt;
 	font-family: helvetica;
 	font-stretch: wider;
 	font-weight:bold;
@@ -44,17 +44,19 @@ body {
 	padding-bottom: 5px;
 }
 .p-subtitle {
-	font-size:60pt;
+	font-size:40pt;
 	font-family:Palatino;
+
 	color:#B3B3B3;
 	line-height: 10%;
 	padding-top: 30px;
 	padding-bottom: 25px;
 }
 .p-sum {
-	font-size:32pt;
+	font-size:40pt;
 	font-family:Palatino;
-	line-height:140%;
+    font-stretch: narrower;
+	line-height:120%;
 	color:#404040;
 	
 }
