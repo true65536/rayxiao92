@@ -33,7 +33,7 @@ body {
 	margin:30px 10px 10px 10px;
 }
 .p-title {
-	font-size: 24pt;
+	font-size: 36pt;
 	font-family: helvetica;
 	font-stretch: wider;
 	font-weight:bold;
@@ -44,7 +44,7 @@ body {
 	padding-bottom: 5px;
 }
 .p-subtitle {
-	font-size:20pt;
+	font-size:32pt;
 	font-family:Palatino;
 	color:#B3B3B3;
 	line-height: 10%;
@@ -52,7 +52,7 @@ body {
 	padding-bottom: 25px;
 }
 .p-sum {
-	font-size:20pt;
+	font-size:32pt;
 	font-family:Palatino;
 	line-height:140%;
 	color:#404040;
