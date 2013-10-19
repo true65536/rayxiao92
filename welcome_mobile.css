@@ -7,6 +7,9 @@ body {
 	text-align:right;
     visibility:hidden;
 }
+body {
+	background-color: #FFFFFF;
+}
 
 .summary {
 	word-wrap: break-word; 

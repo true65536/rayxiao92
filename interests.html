@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" href="news_mobile.css" media="(max-width:641px)" type="text/css"/>
-<link rel="stylesheet" href="news_style.css" media="(min-width:641px)" type="text/css"/>
-<link rel="stylesheet" media="only screen and (max-device-width: 641px)" href="news_mobile.css" type="text/css" />
+<link rel="stylesheet" href="welcome_mobile.css" media="(max-width:641px)" type="text/css"/>
+<link rel="stylesheet" href="welcome_style.css" media="(min-width:641px)" type="text/css"/>
+<link rel="stylesheet" media="only screen and (max-device-width: 641px)" href="welcome_mobile.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
 	counter=-1;
@@ -31,25 +31,6 @@ function start(ct){
 				listcontent+=tablecontent;
 			}
 			document.getElementById("newslist").innerHTML=listcontent;
-			
-			/*
-			while(){
-			  	var selectedText=(
-			  	window.getSelection?window.getSelection():
-			  	document.getSelection?document.getSelection():
-                document.selection.createRange().text
-    	 		);
-				if(!selectedText || selectedText==""){
-  		 		 if(document.activeElement.selectionStart){
-    		 		selectedText =document.activeElement.value.substring(
-      				document.activeElement.selectionStart
-      				.
-      				document.activeElement.selectionEnd);
-   				 }
-				}    	 			
-			}
-			*/
-			
       	}
       	else{
       		console.log("haha");
@@ -61,38 +42,13 @@ function start(ct){
 <head>
 </head>
 
-<body onload="helper()" >
-<table id="subSector" align="center">
-<tr>
-	<td class="inSubSector">
 
-		<div class="SubSectorText"><a href='index.html'>Home</a></div>
-	</td>
-	<td class="inSubSector">
-
-		<div class="SubSectorTextselected"><a href='news.html'>News</a></div>
-	</td>
-	<td class="inSubSector">
-
-		<div class="SubSectorText"><a href='reports.html'>Reports</a></div>
-	</td>
-	<td class="inSubSector">
-
-		<div class="SubSectorText"><a href='portfolio.html'>Portfolio</a></div>	
-	</td>
-	<td class="inSubSector">
-
-		<div class="SubSectorText"><a href='models.html'>Models</a></div>
-	</td>
-	<td class="inSubSector">
-		<div class="SubSectorText"><a href='interests.html'>Interests</a></div>
-	</td>	
-</tr>
-</table>
+<body onload="helper()" > 
+<!--
 <div id="newslist">
 Please wait I'm loading...
 
-<!--
+
 <table class="onepiece">
 
 <tr>
@@ -150,8 +106,41 @@ People's Bank of China and financial institutions sold a net 41.2 billion yuan (
 	</td>
 </tr>
 </table>
-!-->
+
 </div>
+!-->
+
+
+
+<table id="subSector" align="center">
+<tr>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='index.html'>Home</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='news.html'>News</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='reports.html'>Reports</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='portfolio.html'>Portfolio</a></div>	
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='models.html'>Models</a></div>
+	</td>
+	<td class="inSubSector">
+		<div class="SubSectorTextselected"><a href='interests.html'>Interests</a></div>
+	</td>	
+</tr>
+</table>
+
+
 
 </body>
 </html>
