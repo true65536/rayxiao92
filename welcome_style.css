@@ -107,6 +107,7 @@ a:hover {
 }
 #subSectorTop {
 	text-align: center; 
+
 	font-size: 20pt;
 	font-family: Helvetica;
 	table-layout: fixed; 
@@ -145,8 +146,33 @@ a:hover {
     border-top-color: #C0C0C0;
     padding:10px;
 }
-#subSector {
+.subSector {
 	text-align: center; 
+	font-size: 20pt;
+	font-family: Palatino;
+	vertical-align: top;
+	table-layout: fixed; 
+	width: 90%; 
+	margin-left:auto; 
+    margin-right:auto;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color: #C0C0C0;
+    padding:20px;
+    padding-bottom:10px;
+}
+.inSubSectorU {
+	vertical-align : top;
+	padding: 10px;
+}
+.subSector td {
+	padding: 15px;
+}
+.subSector tr {
+
+}
+.subSectorL {
+	text-align: left; 
 	font-size: 20pt;
 	font-family: Palatino;
 	
@@ -157,11 +183,11 @@ a:hover {
     border-bottom-style:solid;
     border-bottom-width:1px;
     border-bottom-color: #C0C0C0;
-    padding:30px;
+    padding:20px;
     padding-bottom:10px;
 }
-#subSector td {
-	padding: 10px;
+#subSectorL td {
+	padding: 15px;
 }
 #subSectorMain td {
 	padding: 30px;
@@ -170,7 +196,7 @@ a:hover {
 	padding: 10px;
 }
 img {
-	border-radius:10px;
+	border-radius:20px;
 }
 .SubSectorText {
 	color: #CCCCCC;
@@ -194,7 +220,13 @@ barline {
 	height: 75px; /* .push must be the same height as .footer */
 }
 
-
+.gdocs {
+	padding: 10px;
+	text-align: center; 
+	width: 90%; 
+	margin-left:auto; 
+    margin-right:auto;
+}
 br {
 
 }
