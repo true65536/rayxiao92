@@ -73,7 +73,7 @@ a:hover {
 }
 .p-title {
 	font-size: 24pt;
-	font-family: helvetica;
+	font-family: Palatino;
 	font-stretch: wider;
 	font-weight:bold;
 	max-width:80%;
@@ -130,6 +130,7 @@ a:hover {
 	
     padding:30px;
 }
+
 #subSectorBot {
 
 
@@ -166,7 +167,7 @@ a:hover {
 	padding: 10px;
 }
 .inSubSector {
-
+	text-align: center;
 	vertical-align : top;
 	padding: 10px;
 }
