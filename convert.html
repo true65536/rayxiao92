@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="welcome_mobile.css" media="(max-width:641px)" type="text/css"/>
+<link rel="stylesheet" href="welcome_style.css" media="(min-width:641px)" type="text/css"/>
+<link rel="stylesheet" media="only screen and (max-device-width: 641px)" href="welcome_mobile.css" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	counter=-1;
+	function helper(){
+		counter=counter+1;
+		console.log(counter);
+		start(counter);
+	}
+function start(ct){
+
+	//Use get API of member database here
+	request = new XMLHttpRequest();
+	request.open("GET", 'http://ancient-cove-1542.herokuapp.com/', true);
+	update={"reqnum":ct};
+	$.post('http://ancient-cove-1542.herokuapp.com/',update);
+	request.send(null);
+	database="";
+	request.onreadystatechange = function(){
+		if (request.readyState == 4 && request.status == 200) {
+     		database = JSON.parse(request.responseText);
+     		listcontent="";
+			for(i=0;i<database.length;i++){
+				//onepis.className="onepiece";
+				tablecontent="";
+				tablecontent+="<table class='onepiece'><tr><td style='word-wrap: break-word'><div class='p-title'>"+database[i]["title"]+"</div><div class='p-subtitle'>"+database[i]["subt"]+"</div></td><td class='portrait'><img height='60' width='60' src="+database[i]["prt"]+"></td></tr><td class='summary' style='word-wrap: break-word' colspan='2'><div class='p-sum'>"+database[i]["summary"]+"</div></td></tr></table>"
+				listcontent+=tablecontent;
+			}
+			document.getElementById("newslist").innerHTML=listcontent;
+      	}
+      	else{
+      		console.log("haha");
+      	}
+	}
+}
+function convert_function(){
+	listcontent = document.getElementById("myTextarea").value; 
+	listcontent = listcontent.replace(/\r?\n/g, '<br />');
+	listcontent = listcontent.replace("(", "-");
+	listcontent = listcontent.replace(')', '');
+	listcontent = listcontent.replace		
+	document.getElementById("convert").innerHTML=listcontent;
+}
+</script>
+<html>
+<head>
+</head>
+
+
+<body onload="helper()" > 
+<!--
+<div id="newslist">
+Please wait I'm loading...
+
+
+<table class="onepiece">
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title"></div>
+		<div class="p-subtitle"></div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum"></div>
+	</td>
+</tr>
+</table>
+
+
+
+<table class="onepiece">
+
+
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title">UBS Settles With U.S. Mortgage Regulator</div>
+		<div class="p-subtitle">By Rui Xiao	- July 23th, 2013</div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum">UBS said it has agreed to a settlement with the Federal Housing Finance Agency, the U.S. regulator for mortgage-finance giants Fannie Mae FNMA +4.96% and Freddie Mac, FMCC +4.62% over allegations that the Swiss banking giant sold defective mortgage-backed securities in the lead-up to the U.S. financial crisis between 2004 and 2007.</div>
+	</td>
+</tr>
+</table>
+
+<table class="onepiece">
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title">Foreign Capital Outflows Hit China in June</div>
+		<div class="p-subtitle">By Rui Xiao	- July 22th, 2013</div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum">BEIJING—Foreign capital flowed out of China in June as economic growth slowed and a rise in the Chinese currency stalled, contributing to a credit crunch that briefly strained the nation's banking system.<br><br>
+People's Bank of China and financial institutions sold a net 41.2 billion yuan ($6.71 billion) worth of foreign currency in June compared with net purchases of 66.86 billion yuan in May, according to Wall Street Journal calculations based on central bank data released Monday.
+
+</div>
+	</td>
+</tr>
+</table>
+
+</div>
+!-->
+
+
+
+<table class="subSector" align="center">
+<tr>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='index.html'>Home</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='news.html'>News</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='reports.html'>Reports</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='portfolio.html'>Portfolio</a></div>	
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='models.html'>Models</a></div>
+	</td>
+	<td class="inSubSector">
+		<div class="SubSectorText"><a href='interests.html'>Interests</a></div>
+	</td>	
+	<td class="inSubSector">
+
+	<div class="SubSectorTextselected"><a href='school.html'>School Works</a></div>
+	</td>		
+</tr>
+</table>
+
+<table class="subSectorL">
+<tr>
+	<td class="inSubSectorU">
+		<textarea style="resize: none;width: 100%;font-size:18pt;" rows="18" Id="myTextarea"></textarea>
+		<button onclick="convert_function();">Convert</button>
+		<div id = "convert"></div>
+
+
+
+	</td>
+</tr>
+
+
+<!--
+<tr>
+	<td class="inSubSectorU">
+		<div class="p-title">2013 Fall</div>
+		<div class = "p-subtitle">Comp 40 - Machine Structure and Assembly Language</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>
+			
+		<div class = "p-subtitle">Econ 191 - Quantitative Financial Economics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Econ 107 - Econometrics Analysis</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Phil 1 - Intro to Philosophy</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+	</td>
+	<td class="inSubSectorU">
+		<div class="p-title">2012 Spring</div>
+		
+		<div class = "p-subtitle">Comp 20 - Web Programming</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>			
+
+		<div class = "p-subtitle">Comp 160 - Algorithm</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+		
+		<div class = "p-subtitle">Econ 13 - Statistics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>
+			
+		<div class = "p-subtitle">Econ 18 - Quantitative Macroeconomics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Econ 60 - International Economics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Math 14 - Finite Math</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+	</td>	
+</tr>
+<tr>
+	<td class="inSubSectorU">
+		<div class="p-title">2012 Fall</div>
+		<div class = "p-subtitle">Comp 15 - Data Structure</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>
+			
+		<div class = "p-subtitle">Comp 61 - Discrete Math</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Math 13 - Multivariable Calculus</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Math 70 - Linear Algebra</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+	</td>
+	<td class="inSubSectorU">
+		<div class="p-title">2011 Spring</div>
+		
+		<div class = "p-subtitle">Comp 20 - Web Programming</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>			
+
+		<div class = "p-subtitle">Comp 160 - Algorithm</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+		
+		<div class = "p-subtitle">Econ 13 - Statistics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>
+			
+		<div class = "p-subtitle">Econ 18 - Quantitative Macroeconomics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Econ 60 - International Economics</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+		<div class = "p-subtitle">Math 14 - Finite Math</div>
+		<div class= "p-sum">asdfasdfa</div>
+		<div class= "p-sum">asdfasdfa</div>	
+
+	</td>	
+</tr>
+-->
+</table>
+
+
+</body>
+</html>
