@@ -1,0 +1,28 @@
+#game_div{
+    text-align: center;
+}
+
+canvas {
+    background-color: #cb630a;
+    padding: 5px;
+    margin: 10px;
+    border-width: 60px;
+    border-color: #010101;
+    border-style: solid;
+}
+
+body {
+    background-color: #128138;
+}
+
+#froggersprite{
+	width:0px;
+	height:0px;
+}
+
+#up,#down,#leftb,#rightb {
+	width:100px;
+	height:100px;
+	text-align:middle;
+    margin-right: auto;
+}
