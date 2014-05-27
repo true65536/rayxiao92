@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="news_mobile.css" media="(max-width:641px)" type="text/css"/>
+<link rel="stylesheet" href="news_style.css" media="(min-width:641px)" type="text/css"/>
+<link rel="stylesheet" media="only screen and (max-device-width: 641px)" href="news_mobile.css" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	counter=-1;
+	function helper(){
+		counter=counter+1;
+		console.log(counter);
+		start(counter);
+	}
+function start(ct){
+
+	//Use get API of member database here
+	request = new XMLHttpRequest();
+	request.open("GET", 'http://ancient-cove-1542.herokuapp.com/', true);
+	update={"reqnum":ct};
+	$.post('http://ancient-cove-1542.herokuapp.com/',update);
+	request.send(null);
+	database="";
+	request.onreadystatechange = function(){
+		if (request.readyState == 4 && request.status == 200) {
+     		database = JSON.parse(request.responseText);
+     		listcontent = "";
+			for(i=0;i<database.length;i++){
+				//onepis.className="onepiece";
+				tablecontent="";
+				tablecontent+="<table class='onepiece'><tr><td style='word-wrap: break-word'><div class='p-title'>"+database[i]["title"]+"</div><div class='p-subtitle'>"+database[i]["subt"]+"</div></td><td class='portrait'><img height='60' width='60' src="+database[i]["prt"]+"></td></tr><td class='summary' style='word-wrap: break-word' colspan='2'><div class='p-sum'>"+database[i]["summary"]+"</div></td></tr></table>"
+				listcontent+=tablecontent;
+			}
+			document.getElementById("newslist").innerHTML=listcontent;
+      	}
+      	else{
+      		console.log("haha");
+      	}
+	}
+}
+</script>
+<html>
+<head>
+</head>
+
+<body onload="helper()" >
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '641173632638384',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.0' // use version 2.0
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+	~~~
+</div>
+
+
+
+
+<table class="subSector" align="center">
+<tr>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='index.html'>Home</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorTextselected"><a href='news.html'>News</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='reports.html'>Reports</a></div>
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='portfolio.html'>Portfolio</a></div>	
+	</td>
+	<td class="inSubSector">
+
+		<div class="SubSectorText"><a href='models.html'>Models</a></div>
+	</td>
+	<td class="inSubSector">
+		<div class="SubSectorText"><a href='interests.html'>Interests</a></div>
+	</td>	
+	<td class="inSubSector">
+
+	<div class="SubSectorText"><a href='school.html'>School Works</a></div>
+	</td>		
+</tr>
+<tr>
+	<td colspan = "7">
+		<div class = "SubSectorText">WSJ News Abridged</div>
+	</td>
+</tr>
+</table>
+
+<div id="newslist">
+Please wait I'm loading...
+
+<!--
+<table class="onepiece">
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title"></div>
+		<div class="p-subtitle"></div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum"></div>
+	</td>
+</tr>
+</table>
+
+
+
+<table class="onepiece">
+
+
+
+<tr>
+	<td style="word-wrap: break-word">
+		<div class="p-title">UBS Settles With U.S. Mortgage Regulator</div>
+		<div class="p-subtitle">By Rui Xiao	- July 23th, 2013</div>
+	</td>
+	<td class="portrait"><img height='60' width='60' id='portrait' src='http://hdn.xnimg.cn/photos/hdn321/20130718/2355/large_mqe3_ec0300058309113e.jpg'/>
+	</td>
+</tr>
+<tr>
+	<td class="summary" style="word-wrap: break-word" colspan="2">
+		<div class="p-sum">UBS said it has agreed to a settlement with the Federal Housing Finance Agency, the U.S. regulator for mortgage-finance giants Fannie Mae FNMA +4.96% and Freddie Mac, FMCC +4.62% over allegations that the Swiss banking giant sold defective mortgage-backed securities in the lead-up to the U.S. financial crisis between 2004 and 2007.</div>
+	</td>
+</tr>
+</table>
+
+!-->
+</div>
+
+</body>
+</html>
