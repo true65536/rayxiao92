@@ -44,9 +44,6 @@ function start(ct){
 
 <body onload="helper()" >
 
-	//Facebook login
-<div id="fb-root"></div>
-
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -82,7 +79,7 @@ function start(ct){
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '641173632638384',
+    appId      : '{your-app-id}',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -112,7 +109,7 @@ function start(ct){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "http//connect.facebook.net/en_US/sdk.js";
+    js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -127,6 +124,20 @@ function start(ct){
     });
   }
 </script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+
 
 
 <table class="subSector" align="center">
@@ -165,11 +176,7 @@ function start(ct){
 	</td>
 </tr>
 </table>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 
-<div id="status">
-</div>
 <div id="newslist">
 Please wait I'm loading...
 
