@@ -23,7 +23,7 @@ function start(ct){
 	request.onreadystatechange = function(){
 		if (request.readyState == 4 && request.status == 200) {
      		database = JSON.parse(request.responseText);
-     		listcontent="";
+     		listcontent = "";
 			for(i=0;i<database.length;i++){
 				//onepis.className="onepiece";
 				tablecontent="";
@@ -31,25 +31,6 @@ function start(ct){
 				listcontent+=tablecontent;
 			}
 			document.getElementById("newslist").innerHTML=listcontent;
-			
-			/*
-			while(){
-			  	var selectedText=(
-			  	window.getSelection?window.getSelection():
-			  	document.getSelection?document.getSelection():
-                document.selection.createRange().text
-    	 		);
-				if(!selectedText || selectedText==""){
-  		 		 if(document.activeElement.selectionStart){
-    		 		selectedText =document.activeElement.value.substring(
-      				document.activeElement.selectionStart
-      				.
-      				document.activeElement.selectionEnd);
-   				 }
-				}    	 			
-			}
-			*/
-			
       	}
       	else{
       		console.log("haha");
@@ -62,6 +43,18 @@ function start(ct){
 </head>
 
 <body onload="helper()" >
+
+	//Facebook login
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <table class="subSector" align="center">
 <tr>
 	<td class="inSubSector">
@@ -98,6 +91,7 @@ function start(ct){
 	</td>
 </tr>
 </table>
+<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
 <div id="newslist">
 Please wait I'm loading...
 

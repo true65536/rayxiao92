@@ -1,13 +1,18 @@
 //draw the title
 	omfg= document.getElementById("om");
 	omfg.play();
+	
+	
+//This function initializes coordinates of obstacles and the frog
 function initialize(){
 	//Fly coordinates, probability, and counter
 	fly=0;
 	pr_fly=0;
 	fly_x=0;
 	fly_y=0;
-	//Home counter, Home[5] is the total counter
+	
+	// Home counter, Home[5] is the total counter
+	
 	home=[];
 	home[0]=0;
 	home[1]=0;
@@ -15,7 +20,9 @@ function initialize(){
 	home[3]=0;
 	home[4]=0;
 	home[5]=0;	
-	//car coordinates
+	
+	// Car coordinates
+	
 	x_log_cor=[];
 	y_log_cor=[];
 	x_car_cor=[];
@@ -60,11 +67,15 @@ function initialize(){
 	x_car_cor[16]=260;
 	y_car_cor[16]=430;
 	x_car_cor[17]=360;
-	y_car_cor[17]=430;		
+	y_car_cor[17]=430;	
+		
 	//Frog coordinates
+	
 	x_cor=185;
 	y_cor=475;
+	
 	//car coordinates
+	
 	x_log_cor[0]=30;
 	y_log_cor[0]=110;
 	x_log_cor[1]=145;
@@ -86,24 +97,32 @@ function initialize(){
 	score=0;
 
 }
+
+//This function draws the title in the map
 function drawtitle(x, y){
 	title=document.getElementById("froggersprite");
 	ctx.drawImage(title,0,0,399,109,x,y,399,109);
 }
+
+//This function draws the fly in the map
 function drawfly(x,y){
 	fly=document.getElementById("froggersprite");
 	ctx.drawImage(fly,139,236,21,21,x,y,21,21);
 }
+
+//This function draws the first road in the map
 function drawroad1 (x, y) {
 	road1=document.getElementById("froggersprite");
 	ctx.drawImage(road1,0,119,399,34,x,y,399,34);
 }
 
+//This function draws the second road in the map
 function drawroad2(x,y){
 	road2=document.getElementById("froggersprite");
 	ctx.drawImage(road2,0,119,399,34,0,470,399,34);
 }
-//draw frogs that indicate lives
+
+//This function draws frogs that indicate lives
 function froglive(x,y){
 	frog1=document.getElementById("froggersprite");
 	ctx.drawImage(frog1,13,335,18,23,x,y,18,23);
@@ -116,59 +135,71 @@ function level_score(level_number,score, number_lives, highscore, x,y){
   	ctx.fillText("Score : " + score, x+80 ,y);
 }
 
+//This function draws white car as obstacles
 function drawwhitecar(x,y){
 	whitecar=document.getElementById("froggersprite");
 	ctx.drawImage(whitecar,46,265,29,25,x,y,29,25);
 }
+//This function draws white car_b as obstacles
 function drawwhitecar_b(x,y){
 	whitecar=document.getElementById("froggersprite");
 	ctx.drawImage(whitecar,39,301,29,25,x,y,29,25);
 }
+//This function draws long car as obstacles
 function drawlongcar(x,y){
 	longcar=document.getElementById("froggersprite");
 	ctx.drawImage(longcar,105,302,48,20,x,y,50,30);
 }
+//This function draws yellow car as obstacles
 function drawyellowcar(x,y){
 	yellowcar=document.getElementById("froggersprite");
 	ctx.drawImage(yellowcar,82,265,26,26,x,y,30,30);
 }
-//draw a long log
+//This function draws a long log
 function drawlonglog(x,y){
 	longlog=document.getElementById("froggersprite");
 	ctx.drawImage(longlog,5,164,180,22,x,y,180,35);
 }
+//This function draws a shorts log
 function drawshortlog(x,y){
 	shortlog=document.getElementById("froggersprite");
 	ctx.drawImage(shortlog,5,230,86,22,x,y,86,35);
 }
+//This function draws a mid log
 function drawmidlog(x,y){
 	midlog=document.getElementById("froggersprite");
 	ctx.drawImage(shortlog,5,198,120,22,x,y,120,35);
 }
-//draw upward frog
+//This function draws an upward frog
 function drawupfrog(x,y){
 	upfrog=document.getElementById("froggersprite");
 	ctx.drawImage(upfrog,12,369,23,17,x,y,25,20);
 }
 
+
+//This function animates the frog moves up
 function frog_go_up(){
 	x_cor=x_cor;
 	score=score+10;
 	y_cor=y_cor-40;
 
 }
+//This function animates the frog moves left
 function frog_go_left(){
 	x_cor=x_cor-21;
 	y_cor=y_cor;
 }
+//This function animates the frog moves right
 function frog_go_right(){
 	x_cor=x_cor+21;
 	y_cor=y_cor;
 }
+//This function animates the frog moves down
 function frog_go_down(){
 	x_cor=x_cor;
 	y_cor=y_cor+40;
 }
+//This function animates the frog dies
 function death(){
 	alert("AW!!!!!!");
 	number_lives--;
@@ -176,6 +207,7 @@ function death(){
 	x_cor=185;
 	y_cor=475;
 }
+//This function starts the game by calling initialization and game loop
 function start_game(){
 	initialize();
 	haha=0;
@@ -318,6 +350,8 @@ function start_game(){
 			}
 		}
 		checkcollide();
+		
+		//Thie function detects collision between frog and obstacles
 		function checkcollide(){
 			collog=false;
 			colcar=false;
@@ -483,6 +517,7 @@ function start_game(){
 		}  
 		
 	}
+	//This is the game loop
 	game();	
 		function game(){
 			setInterval(basicboard,33);
